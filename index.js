@@ -29,7 +29,7 @@ export default {
           },
           {
             name: "note",
-            description: "Write a note to the T R E E."
+            description: "Write a note to the T R E E.",
             options: [
               {
                 name: "content",
