@@ -13,6 +13,10 @@ const commands = [
         required: true
       }
     ]
+  },
+  {
+    name: "meow",
+    description: ":3"
   }
 ];
   
