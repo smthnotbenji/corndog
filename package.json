@@ -1,0 +1,7 @@
+{
+  "name": "corndog",
+  "type": "module",
+  "dependencies": {
+    "tweetnacl": "^1.0.3"
+  }
+}
