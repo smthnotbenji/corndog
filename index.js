@@ -1,5 +1,5 @@
 import { verifyRequest } from "./verify.js";
-import { getCommand } from "./commands/index.js"; // ✅ FIXED
+import { getCommand } from "./commands/register.js"; // ✅ FIXED
 
 export default {
   async fetch(request, env) {
