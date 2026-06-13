@@ -23,10 +23,12 @@ export default {
               }
             ]
           },
+          
           {
             name: "meow",
             description: ":3"
           },
+          
           {
             name: "note",
             description: "Write a note to the T R E E.",
@@ -49,7 +51,7 @@ export default {
               Authorization: `Bot ${env.TOKEN}`,
               "Content-Type": "application/json"
             },
-            body: JSON.stringify([])
+            body: JSON.stringify(commands)
           }
         );
 
