@@ -44,7 +44,7 @@ export default {
           });
         }
 
-        return Response.json(await command.execute(interaction));
+        return Response.json(await command.execute(interaction, env));
       }
 
       return new Response("Unhandled interaction");
