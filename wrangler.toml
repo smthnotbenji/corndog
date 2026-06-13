@@ -2,7 +2,7 @@ name = "corndog"
 main = "index.js"
 compatibility_date = "2026-06-13"
 
-workers_dev = false
+workers_dev = true
 preview_urls = false
 [vars]
 PUBLIC_KEY = "b7b1869a10165349226ddc59f75c7b398ec137d1bdb96d01021f9f0b778ac0dd"
