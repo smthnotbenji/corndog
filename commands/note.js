@@ -13,7 +13,7 @@ export default {
 
   async execute(interaction, env) {
     const options = interaction.data?.options || [];
-    const text = options.find(o => o.name === "text")?.value;
+    const text = options.find(o => o.name === "content")?.value;
 
     const CHANNEL_ID = "1515489551999569990";
 
