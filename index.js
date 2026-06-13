@@ -3,6 +3,8 @@ import { getCommand } from "./commands/register.js";
 
 export default {
   async fetch(request, env) {
+    console.log("REQUEST HIT");
+
     if (request.method !== "POST") {
       return new Response("Not allowed", { status: 405 });
     }
