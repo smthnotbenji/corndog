@@ -15,7 +15,7 @@ const commands = [
 
 async function register() {
   const res = await fetch(
-    `https://discord.com/api/v10/applications/${env.APP_ID}/guilds/${env.GUILD_ID}/commands`,
+    `https://discord.com/api/v10/applications/1515432846741733416/guilds/${env.GUILD_ID}/commands`,
     {
       method: "PUT",
       headers: {
