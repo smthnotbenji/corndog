@@ -1,6 +1,9 @@
 {
   "name": "corndog",
   "type": "module",
+  "scripts": {
+    "deploy": "node commands.js"
+  },
   "dependencies": {
     "tweetnacl": "^1.0.3"
   }
