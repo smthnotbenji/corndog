@@ -1,4 +1,3 @@
-import { env } from "cloudflare:workers";
 
 const commands = [
   {
