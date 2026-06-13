@@ -1,7 +1,15 @@
 const commands = [
   {
     name: "echo",
-    description: "Make corndog say a thing"
+    description: "Make corndog say a thing",
+        options: [
+      {
+        name: "text",
+        description: "The text",
+        type: 3,
+        required: true
+      }
+    ]
   }
 ];
 
