@@ -1,42 +1,32 @@
 export default {
-name: "echo",
-    description: "Make corndog say a thing",
-        options: [
-      {
-        name: "text",
-        description: "The text",
-        type: 3,
-        required: true
-      }
-    ],
+  name: "echo",
+  description: "Make corndog say a thing",
+
+  options: [
+    {
+      name: "text",
+      description: "The text",
+      type: 3,
+      required: true
+    }
+  ],
 
   async execute(interaction, env) {
     try {
-      const get = (name) =>
-        interaction.data.options?.find(o => o.name === name)?.value;
-
-      const text = get("text");
-
-      if (!text) {
-        return {
-          type: 4,
-          data: {
-            content: "No text provided"
-          }
-        };
-      }
+      const options = interaction.data?.options || [];
+      const text = options.find(o => o.name === "text")?.value;
 
       return {
         type: 4,
         data: {
-          content: text
+          content: text || "No text provided"
         }
       };
     } catch (err) {
       return {
         type: 4,
         data: {
-          content: "Error in say command"
+          content: "Error in echo command"
         }
       };
     }
