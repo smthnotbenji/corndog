@@ -51,7 +51,7 @@ export default {
               Authorization: `Bot ${env.TOKEN}`,
               "Content-Type": "application/json"
             },
-            body: JSON.stringify(commands)
+            body: JSON.stringify([])
           }
         );
 
