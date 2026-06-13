@@ -1,6 +1,6 @@
 export default {
   name: "note",
-  description: "Send a note to the T R E E",
+  description: "Write a note to the T R E E.",
 
   options: [
     {
@@ -15,10 +15,9 @@ export default {
     const options = interaction.data?.options || [];
     const text = options.find(o => o.name === "text")?.value;
 
-    const CHANNEL_ID = "PUT_CHANNEL_ID_HERE";
+    const CHANNEL_ID = "1515489551999569990";
 
     try {
-      // 🔥 Send message to channel
       await fetch(
         `https://discord.com/api/v10/channels/${CHANNEL_ID}/messages`,
         {
@@ -32,12 +31,11 @@ export default {
           })
         }
       );
-
-      // ✅ Respond to user
+      
       return {
         type: 4,
         data: {
-          content: "Note sent"
+          content: `Note sent, *"${text}"*`
         }
       };
 
