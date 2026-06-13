@@ -23,7 +23,8 @@ export default {
     }
 
     if (interaction.type === 2) {
-      const command = getCommand(interaction.data.name);
+      const commandName = interaction.data?.name;
+const command = getCommand(commandName);
 
       if (!command) {
         return Response.json({
