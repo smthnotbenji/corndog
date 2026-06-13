@@ -21,6 +21,10 @@ const commands = [
         required: true
       }
     ]
+  },
+  {
+    name: "meow",
+    description: ":3"
   }
 ];
   
@@ -58,7 +62,7 @@ const commands = [
 
       console.log("TYPE:", interaction.type);
 
-      // 🔑 THIS is the most important part
+
       if (interaction.type === 1) {
         console.log("PING RECEIVED");
         return Response.json({ type: 1 });
