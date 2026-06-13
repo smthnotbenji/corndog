@@ -1,4 +1,6 @@
+const url = new URL(request.url);
 
+if (url.pathname === "/register") {
 const commands = [
   {
     name: "echo",
@@ -13,22 +15,19 @@ const commands = [
     ]
   }
 ];
+  
 
-async function register() {
   const res = await fetch(
     `https://discord.com/api/v10/applications/${env.APP_ID}/guilds/${env.GUILD_ID}/commands`,
     {
       method: "PUT",
       headers: {
-        "Authorization": `Bot ${env.TOKEN}`,
+        Authorization: `Bot ${env.TOKEN}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(commands)
     }
   );
 
-  const data = await res.json();
-  console.log(data);
+  return new Response(await res.text());
 }
-
-register();
