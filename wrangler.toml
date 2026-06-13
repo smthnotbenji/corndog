@@ -1,0 +1,8 @@
+name = "corndog"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+[vars]
+PUBLIC_KEY = "b7b1869a10165349226ddc59f75c7b398ec137d1bdb96d01021f9f0b778ac0dd"
+APP_ID = "1515432846741733416"
+GUILD_ID = "1449951300853694466"
