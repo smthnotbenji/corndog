@@ -1,5 +1,5 @@
 import { verifyRequest } from "./verify.js";
-import { getCommand } from "./commands/register.js"; // ✅ FIXED
+import { getCommand } from "./commands/index.js"; // ✅ FIXED
 
 export default {
   async fetch(request, env) {
@@ -69,16 +69,25 @@ export default {
         return Response.json({ type: 1 });
       }
 
-if (interaction.type === 2) {
-  console.log("COMMAND RECEIVED");
+      // ✅ Command handling
+      if (interaction.type === 2) {
+        const commandName = interaction.data?.name;
+        console.log("COMMAND:", commandName);
 
-  return Response.json({
-    type: 4,
-    data: {
-      content: "BASE WORKING"
-    }
-  });
-}
+        const command = getCommand(commandName);
+
+        if (!command) {
+          return Response.json({
+            type: 4,
+            data: { content: "Command not found" }
+          });
+        }
+
+        const result = await command.execute(interaction, env);
+        console.log("RESULT:", result);
+
+        return Response.json(result);
+      }
 
       return new Response("Unhandled interaction");
 
