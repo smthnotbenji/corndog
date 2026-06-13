@@ -81,7 +81,9 @@ const commands = [
           });
         }
 
-        return Response.json(await command.execute(interaction, env));
+        return Response.json(
+  await command.execute(interaction, env)
+);
       }
 
       return new Response("Unhandled interaction");
