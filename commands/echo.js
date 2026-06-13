@@ -1,6 +1,6 @@
 export default {
   name: "echo",
-
+ description: 
   async execute(interaction) {
     const options = interaction.data.options;
 
