@@ -3,50 +3,54 @@ import { getCommand } from "./commands/register.js";
 
 export default {
   async fetch(request, env) {
-    console.log("REQUEST HIT");
+    try {
+      console.log("REQUEST RECEIVED");
 
-    if (request.method !== "POST") {
-      return new Response("Not allowed", { status: 405 });
-    }
-
-    const { isValid, body } = await verifyRequest(
-      request,
-      env.PUBLIC_KEY
-    );
-
-    if (!isValid) {
-      return new Response("Invalid request", { status: 401 });
-    }
-
-    const interaction = JSON.parse(body);
-
-    if (interaction.type === 1) {
-      return Response.json({ type: 1 });
-    }
-
-    if (interaction.type === 2) {
-      const commandName = interaction.data?.name;
-const command = getCommand(commandName);
-
-      if (!command) {
-        return Response.json({
-          type: 4,
-          data: { content: "Command not found" }
-        });
+      if (request.method !== "POST") {
+        return new Response("Not allowed", { status: 405 });
       }
 
-      try {
-        return Response.json(
-          await command.execute(interaction)
-        );
-      } catch (err) {
-        return Response.json({
-          type: 4,
-          data: { content: "Couldnt execute command" }
-        });
-      }
-    }
+      const { isValid, body } = await verifyRequest(
+        request,
+        env.PUBLIC_KEY
+      );
 
-    return new Response("Unhandled interaction");
+      console.log("VERIFY:", isValid);
+
+      if (!isValid) {
+        return new Response("Invalid request", { status: 401 });
+      }
+
+      const interaction = JSON.parse(body);
+
+      console.log("TYPE:", interaction.type);
+
+      // 🔑 THIS is the most important part
+      if (interaction.type === 1) {
+        console.log("PING RECEIVED");
+        return Response.json({ type: 1 });
+      }
+
+      if (interaction.type === 2) {
+        const commandName = interaction.data?.name;
+        console.log("COMMAND:", commandName);
+
+        const command = getCommand(commandName);
+
+        if (!command) {
+          return Response.json({
+            type: 4,
+            data: { content: "Command not found" }
+          });
+        }
+
+        return Response.json(await command.execute(interaction));
+      }
+
+      return new Response("Unhandled interaction");
+    } catch (err) {
+      console.log("ERROR:", err);
+      return new Response("Internal error", { status: 500 });
+    }
   }
 };
