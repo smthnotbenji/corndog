@@ -1,6 +1,15 @@
 export default {
   name: "echo",
- description: 
+    description: "Make corndog say a thing",
+        options: [
+      {
+        name: "text",
+        description: "The text",
+        type: 3,
+        required: true
+      }
+    ],
+          
   async execute(interaction) {
     const options = interaction.data.options;
 
