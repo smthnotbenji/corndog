@@ -26,6 +26,18 @@ export default {
           {
             name: "meow",
             description: ":3"
+          },
+          {
+            name: "note",
+            description: "Write a note to the T R E E."
+            options: [
+              {
+                name: "content",
+                description: "Content of the note",
+                type: 3,
+                required: true
+              }
+            ]
           }
         ];
 
